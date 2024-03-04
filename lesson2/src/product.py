@@ -15,13 +15,13 @@ class Product:
 
     @property
     def price(self) -> float:
-        return self.price
+        return self.__price
 
     @price.setter
     def price(self, new_price: float):
-        if new_price < self.price:
+        if new_price < self.__price:
             message = input("Подтвердите снижение цены Y - Да, N - Нет ").lower()
             if message == "y":
-                self.price = new_price
+                self.__price = new_price
             return
-        self.price = new_price
+        self.__price = new_price

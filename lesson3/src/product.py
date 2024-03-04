@@ -10,7 +10,7 @@ class Product:
         self.quantity = quantity
 
     def __str__(self):
-        return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.\n'
+        return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.'
 
     @classmethod
     def new_product(cls, product_data: dict):
@@ -18,16 +18,16 @@ class Product:
 
     @property
     def price(self) -> float:
-        return self.price
+        return self.__price
 
     @price.setter
     def price(self, new_price: float):
-        if new_price < self.price:
+        if new_price < self.__price:
             message = input("Подтвердите снижение цены Y - Да, N - Нет ").lower()
             if message == "y":
-                self.price = new_price
-            return 
-        self.price = new_price
+                self.__price = new_price
+            return
+        self.__price = new_price
 
     def __add__(self, other):
         return self.price * self.quantity + other.price * other.quantity
